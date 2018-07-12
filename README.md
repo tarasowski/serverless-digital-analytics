@@ -7,6 +7,10 @@ Build your own Google Analytics with Serverless AWS Stack in minutes.
 4. Get your endpoint and change it inside index.html or add this code to your website
 
 ```js
+<script>
+    document.cookie = "username=John Doe"
+    const x = document.cookie
+
 fetch(
   'https://do3229of4m.execute-api.us-east-1.amazonaws.com/Prod/track', // change the endpoint
   {
@@ -23,5 +27,9 @@ fetch(
     headers: new Headers({ "Content-Type": "application/json" })
   }
 )
+</script>
 ``` 
 5. Have fun
+
+
+![Architecture](./images/serverless-digital-analytics.png)
