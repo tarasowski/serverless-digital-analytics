@@ -31,5 +31,12 @@ fetch(
 ``` 
 5. Have fun
 
+### Basic Architecture
 
 ![Architecture](./images/serverless-digital-analytics.png)
+
+----
+
+### DynamoDB Schema
+
+![DynamoDb](./images/dynamodb-screenshot.png)
