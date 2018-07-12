@@ -1,0 +1,89 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Simple web tracking solution
+    
+
+Globals:
+    Function:
+        Timeout: 3
+        Runtime: nodejs8.10
+        
+    Api:
+        Cors:
+            AllowMethods: "'*'"
+            AllowHeaders: "'*'"
+            AllowOrigin: "'*'"
+
+
+Resources:
+
+    LambdaFromGatewayToSNS:
+        Type: 'AWS::Serverless::Function'
+        Properties:
+            Handler: gateway-to-sns.handler
+            Environment: 
+                Variables:
+                    SNS_TOPIC: !Ref SnsTrackEvents
+            Policies:
+                -   Version: 2012-10-17
+                    Statement: 
+                        -   Effect: Allow
+                            Action:
+                                -   sns:Publish
+                            Resource: '*'
+            Events:
+                SendRequest:
+                    Type: Api 
+                    Properties:
+                        Path: /track
+                        Method: POST
+    
+    LambdaFromSNSToDynamoDb:
+        Type: 'AWS::Serverless::Function'
+        Properties:
+            Handler: sns-to-dynamodb.handler
+            Environment: 
+                Variables:
+                    TABLE_NAME: !Ref ServerlessWebTracker
+            Policies:
+                -   Version: 2012-10-17
+                    Statement: 
+                        -   Effect: Allow
+                            Action:
+                                -   dynamodb:UpdateItem
+                            Resource: '*'
+            Events:
+                FetchFromSns:
+                    Type: SNS 
+                    Properties:
+                        Topic: !Ref SnsTrackEvents
+                        
+    SnsTrackEvents:
+        Type: 'AWS::SNS::Topic'
+        
+    ServerlessWebTracker:
+        Type: 'AWS::DynamoDB::Table'
+        Description: Database table for storing website visits
+        Properties:
+            TableName: ServerlessWebTracker
+            AttributeDefinitions:
+                -   AttributeName: website
+                    AttributeType: S
+                -   AttributeName: url
+                    AttributeType: S
+            KeySchema:
+                -   AttributeName: website
+                    KeyType: HASH
+                -   AttributeName: url
+                    KeyType: RANGE
+            ProvisionedThroughput:
+                ReadCapacityUnits: 1
+                WriteCapacityUnits: 1
+
+
+Outputs:
+
+    ServerlessTrackingApi:
+      Description: "API Gateway endpoint URL"
+      Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/track"
+

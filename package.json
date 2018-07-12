@@ -1,0 +1,17 @@
+{
+  "name": "serverless-tracking-light",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "No testing yet",
+    "folder": "rm -rf build && mkdir build",
+    "bucket": "aws s3api create-bucket --bucket serverless-tracking-light-test --region us-east-1",
+    "package": "aws cloudformation package --template-file template.yaml --output-template-file build/output.yaml --s3-bucket serverless-tracking-light-test",
+    "deploy": "aws cloudformation deploy --template-file build/output.yaml --stack-name serverless-tracking-light-test --capabilities CAPABILITY_NAMED_IAM",
+    "qd": "npm run folder && npm run bucket && npm run package && npm run deploy"
+  },
+  "keywords": [],
+  "author": "Dimitri Tarasowski",
+  "license": "ISC"
+}

@@ -1,0 +1,22 @@
+{
+    "Records": [
+        {
+            "EventSource": "aws:sns",
+            "EventVersion": "1.0",
+            "EventSubscriptionArn": "arn:aws:sns:us-east-1:012276481874:serverless-tracking-light-test-SnsTrackEvents-89CUE3R9IL11:5c1d244a-e74e-4cd3-b5ef-03a949ac10ce",
+            "Sns": {
+                "Type": "Notification",
+                "MessageId": "5e2e400a-4ef8-526f-8bdd-13cb0c4b51c3",
+                "TopicArn": "arn:aws:sns:us-east-1:012276481874:serverless-tracking-light-test-SnsTrackEvents-89CUE3R9IL11",
+                "Subject": null,
+                "Message": "{\"name\":\"Hello This is me\",\"date\":1531394496326,\"url\":\"https://vfs.cloud9.us-east-1.amazonaws.com/vfs/c10cd4db0b654b69a3fdba8d8e19ed5e/preview/serverless-tracking-light/index.html?_c9_id=livepreview1&_c9_host=https://console.aws.amazon.com\",\"website\":\"yfFbTv1GslRcIkUsWpa7\"}",
+                "Timestamp": "2018-07-12T11:50:11.320Z",
+                "SignatureVersion": "1",
+                "Signature": "b9wHjG88TjhGdzmp4EybQbQRwVczWecNUvETfZZwXtJX2G98aBsUKUJ0K1YWzD3C613cbbs+D2ldU0LFSp/P7pF+zoDBDyfjtxbix5hitFtpM5ND3wvpniAoUxRe5iNzGWGrAwcQYdvuEEffhdgzMqeckk+qu5xxSog7VmlMAU3LVnPh34XWikTmy4jkWN8CTXbkhhMl1ZkqS20IFPHsjtTEYrn8w95SB3Y/XAjXgryF5c63oNzaX9mshz9fvPtnnqghg+cb812BkpDOLIKfs/eyt058o67wDBDHrqnex8u9UgN0IPcSVFUgxDpI/5I9w2Go7N5PzizZJ/C94W6WJw==",
+                "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-eaea6120e66ea12e88dcd8bcbddca752.pem",
+                "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:012276481874:serverless-tracking-light-test-SnsTrackEvents-89CUE3R9IL11:5c1d244a-e74e-4cd3-b5ef-03a949ac10ce",
+                "MessageAttributes": {}
+            }
+        }
+    ]
+}
